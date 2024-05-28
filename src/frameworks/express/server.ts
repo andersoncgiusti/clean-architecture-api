@@ -3,13 +3,13 @@ import cors from 'cors'
 import swaggerUi from 'swagger-ui-express'
 import specs from '../../swagger'
 import registerControllers from '../../adapters/controllers'
+import { UserRepository } from '../../adapters/repositories/UserRepository'
 
 const app: Application = express()
+const userRepository = new UserRepository()
 
 app.use(cors())
-
 app.use(express.json())
-
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs))
 
 /**
@@ -38,6 +38,6 @@ app.get('/health/ping', (req: Request, res: Response) => {
   res.json({ success: true, message: 'Check OK' })
 })
 
-registerControllers(app)
+registerControllers(app, userRepository)
 
 export default app

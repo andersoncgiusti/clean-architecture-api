@@ -1,10 +1,10 @@
 import { User } from '../../entities/User'
 import { IGetUserRepository } from './IGetUserRepository'
 
-export class GetUserController {
+export class GetUserUseCase {
   constructor(private readonly userRepository: IGetUserRepository) {}
 
-  async execute(): Promise<User[]> {
-    return this.userRepository.getUsers()
+  async execute(userId: number): Promise<User | null> {
+    return this.userRepository.getUserById(userId)
   }
 }
