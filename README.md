@@ -12,6 +12,7 @@ src/
 ├── adapters/
 │   ├── controllers/
 │   │   └── UserController.ts
+│   │   └── index.ts
 │   ├── repositories/
 │   │   └── UserRepository.ts
 │   └── presenters/

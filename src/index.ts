@@ -1,8 +1,11 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable @typescript-eslint/no-floating-promises */
 import app from './frameworks/express/server'
 import portfinder from 'portfinder'
 import connectDB from './frameworks/typeorm/database'
 import logger from './shared/logger'
-;(async () => {
+
+(async () => {
   try {
     await connectDB()
 

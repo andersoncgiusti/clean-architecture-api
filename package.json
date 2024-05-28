@@ -63,6 +63,7 @@
     "portfinder": "^1.0.32",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.0",
+    "typeorm": "^0.3.20",
     "winston": "^3.13.0"
   }
 }

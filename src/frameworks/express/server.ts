@@ -2,6 +2,7 @@ import express, { Application, Request, Response } from 'express'
 import cors from 'cors'
 import swaggerUi from 'swagger-ui-express'
 import specs from '../../swagger'
+import registerControllers from '../../adapters/controllers'
 
 const app: Application = express()
 
@@ -30,11 +31,13 @@ app.get('/', (req: Request, res: Response) => {
  *   get:
  *     summary: Verifica se o servidor está respondendo corretamente
  *     responses:
- *       '200':
+ *       '201':
  *         description: Mensagem de sucesso
  */
 app.get('/health/ping', (req: Request, res: Response) => {
   res.json({ success: true, message: 'Check OK' })
 })
+
+registerControllers(app)
 
 export default app
