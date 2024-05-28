@@ -12,12 +12,12 @@ module.exports = {
   // Stop running tests after `n` failures
   // bail: 1,
 
-     // The glob patterns Jest uses to detect test files
+  // The glob patterns Jest uses to detect test files
   testMatch: [
     // "**/__tests__/**/?(*.)+(spec|test).ts",
     // "**/__tests__/construction.spec.ts",
     // "**/src/**/account-recovery.spec.ts",
-    "**/src/**/?(*.)+(spec|test).ts"
+    '**/src/**/?(*.)+(spec|test).ts'
   ],
 
   // The directory where Jest should store its cached dependency information
@@ -35,7 +35,7 @@ module.exports = {
   // collectCoverageFrom: undefined,
 
   // The directory where Jest should output its coverage files
-  coverageDirectory: "<rootDir>/coverage/",
+  coverageDirectory: '<rootDir>/coverage/',
 
   // An array of regexp pattern strings used to skip coverage collection
   // coveragePathIgnorePatterns: [
@@ -43,12 +43,7 @@ module.exports = {
   // ],
 
   // A list of reporter names that Jest uses when writing coverage reports
-  coverageReporters: [
-    "json",
-    "text",
-    "lcov",
-    "clover"
-  ],
+  coverageReporters: ['json', 'text', 'lcov', 'clover'],
 
   // An object that configures minimum threshold enforcement for coverage results
   // coverageThreshold: undefined,
@@ -91,10 +86,12 @@ module.exports = {
   // ],
 
   // A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, { prefix: '<rootDir>' }),
+  moduleNameMapper: pathsToModuleNameMapper(compilerOptions.paths, {
+    prefix: '<rootDir>'
+  }),
 
   // An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
-//   modulePathIgnorePatterns: ["<rootDir>/src/__tests__/"],
+  //   modulePathIgnorePatterns: ["<rootDir>/src/__tests__/"],
 
   // Activates notifications for test results
   // notify: false,
@@ -144,7 +141,7 @@ module.exports = {
   // snapshotSerializers: [],
 
   // The test environment that will be used for testing
-  testEnvironment: 'node',
+  testEnvironment: 'node'
 
   // Options that will be passed to the testEnvironment
   // testEnvironmentOptions: {},

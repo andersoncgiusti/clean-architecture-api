@@ -4,7 +4,11 @@
     "node": true,
     "jest": true
   },
-  "extends": ["standard", "plugin:@typescript-eslint/recommended"],
+  "extends": [
+    "standard",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
   "parser": "@typescript-eslint/parser",
   "overrides": [
     {
@@ -18,13 +22,14 @@
     "ecmaVersion": 11,
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "prettier"],
   "rules": {
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "no-unused-vars": "off",
     "@typescript-eslint/no-floating-promises": "error",
     "space-before-function-paren": "off",
-    "no-useless-constructor": "off"
+    "no-useless-constructor": "off",
+    "prettier/prettier": ["error", { "semi": false, "singleQuote": true }]
   }
 }

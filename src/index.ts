@@ -1,13 +1,22 @@
 import app from './frameworks/express/server'
-import * as portfinder from 'portfinder'
+import portfinder from 'portfinder'
+import connectDB from './frameworks/typeorm/database'
+import logger from './shared/logger'
+;(async () => {
+  try {
+    await connectDB()
 
-portfinder.getPortPromise({ port: 3000 })
-  .then((port) => {
+    const port = await portfinder
+      .getPortPromise({ port: 3000 })
+      .catch((error) => {
+        throw new Error(`Failed to get port: ${error}`)
+      })
+
     app.listen(port, () => {
-      console.log(`Server online at url http://localhost:${port}`)
-      console.log(`Document online at url http://localhost:${port}/api-docs`)
+      logger.info(`Server online at url http://localhost:${port}`)
+      logger.info(`Document online at url http://localhost:${port}/api-docs`)
     })
-  })
-  .catch((error) => {
-    console.error('Failed to start server:', error)
-  })
+  } catch (error) {
+    logger.error('Failed to start server:', error)
+  }
+})()
