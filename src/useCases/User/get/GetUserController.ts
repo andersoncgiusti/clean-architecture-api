@@ -1,12 +1,14 @@
-import { Application, Request, Response } from 'express'
-import { UserRepository } from '../../../adapters/repositories/UserRepository'
+import { Request, Response } from 'express'
+import { UserService } from '../../../services/UserService'
 import { UserPresenter } from '../../../adapters/presenters/UserPresenter'
 
-export default (app: Application, userRepository: UserRepository) => {
-  app.get('/api/users/:id', async (req: Request, res: Response) => {
+export class GetUserController {
+  constructor(private readonly userService: UserService) {}
+
+  async handle(req: Request, res: Response): Promise<void> {
     const { id } = req.params
     try {
-      const user = await userRepository.getUserById(Number(id))
+      const user = await this.userService.getUserById(id)
       if (!user) {
         return res.status(404).json({ error: 'User not found' })
       }
@@ -14,14 +16,5 @@ export default (app: Application, userRepository: UserRepository) => {
     } catch (error) {
       res.status(500).json({ error: 'Internal Server Error' })
     }
-  })
-
-  app.get('/api/users', async (req: Request, res: Response) => {
-    try {
-      const users = userRepository.getUsers()
-      res.json(UserPresenter.toResponseArray(users))
-    } catch (error) {
-      res.status(500).json({ error: 'Internal Server Error' })
-    }
-  })
+  }
 }

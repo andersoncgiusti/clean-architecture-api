@@ -1,10 +1,10 @@
-import { User } from '../../../entities/User'
-import { IGetUserRepository } from './IGetUserRepository'
+import { IUser } from '../../../frameworks/typeorm/entities/UserEntity'
+import { UserRepository } from '../../../adapters/repositories/UserRepository'
 
 export class GetUserUseCase {
-  constructor(private readonly userRepository: IGetUserRepository) {}
+  constructor(private readonly userRepository: UserRepository) {}
 
-  async execute(userId: number): Promise<User | null> {
+  async execute(userId: string): Promise<IUser | null> {
     return this.userRepository.getUserById(userId)
   }
 }

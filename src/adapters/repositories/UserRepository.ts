@@ -1,20 +1,22 @@
-import { User } from '../../entities/User'
-
-const users: User[] = [
-  { id: 1, name: 'John Doe' },
-  { id: 2, name: 'Jane Smith' }
-]
+import User, { IUser } from '../../frameworks/typeorm/entities/UserEntity'
 
 export interface IUserRepository {
-  getUsers(): User[]
+  getUsers(): Promise<IUser[]>
+  getUserById(userId: string): Promise<IUser | null>
+  createUser(userData: Partial<IUser>): Promise<IUser>
 }
 
 export class UserRepository implements IUserRepository {
-  getUsers(): User[] {
-    return users
+  async getUsers(): Promise<IUser[]> {
+    return User.find().exec()
   }
 
-  getUserById(userId: number): User | null {
-    return users.find((user) => user.id === userId) || null
+  async getUserById(userId: string): Promise<IUser | null> {
+    return User.findById(userId).exec()
+  }
+
+  async createUser(userData: Partial<IUser>): Promise<IUser> {
+    const user = new User(userData)
+    return user.save()
   }
 }
