@@ -1,6 +1,6 @@
 import { User } from '../entities/User'
-import { GetUserUseCase } from '../useCases/getUser/GetUserUseCase'
-import { IGetUserRepository } from '../useCases/getUser/IGetUserRepository'
+import { GetUserUseCase } from '../useCases/User/get/GetUserUseCase'
+import { IGetUserRepository } from '../useCases/User/get/IGetUserRepository'
 
 export class UserService {
   constructor(private readonly getUserRepository: IGetUserRepository) {}

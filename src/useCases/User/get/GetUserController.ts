@@ -1,6 +1,6 @@
 import { Application, Request, Response } from 'express'
-import { UserRepository } from '../../adapters/repositories/UserRepository'
-import { UserPresenter } from '../../adapters/presenters/UserPresenter'
+import { UserRepository } from '../../../adapters/repositories/UserRepository'
+import { UserPresenter } from '../../../adapters/presenters/UserPresenter'
 
 export default (app: Application, userRepository: UserRepository) => {
   app.get('/api/users/:id', async (req: Request, res: Response) => {

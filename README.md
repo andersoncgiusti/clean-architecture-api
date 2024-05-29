@@ -2,26 +2,21 @@
 
 ```plaintext
 src/
-├── entities/
-│   └── User.ts
-├── useCases/
-│   └── createUser/
-│       ├── CreateUserUseCase.ts
-│       ├── ICreateUserRepository.ts
-│       └── CreateUserController.ts
 ├── adapters/
 │   ├── controllers/
+│   │   ├── index.ts
 │   │   └── UserController.ts
-│   │   └── index.ts
-│   ├── repositories/
-│   │   └── UserRepository.ts
-│   └── presenters/
-│       └── UserPresenter.ts
+│   ├── presenters/
+│   │   └── UserPresenter.ts
+│   └── repositories/
+│       └── UserRepository.ts
+├── entities/
+│   └── User.ts
 ├── frameworks/
 │   ├── express/
-│   │   ├── server.ts
-│   │   └── middlewares/
-│   │       └── ExampleMiddleware.ts
+│   │   ├── middlewares/
+│   │   │   └── ExampleMiddleware.ts
+│   │   └── server.ts
 │   └── typeorm/
 │       ├── entities/
 │       │   └── UserEntity.ts
@@ -29,7 +24,20 @@ src/
 ├── services/
 │   └── UserService.ts
 ├── shared/
+│   ├── logger/
+│   │   └── index.ts
 │   └── utils/
 │       └── Validation.ts
+└── useCases/
+    └── user/
+        ├── createUser/
+        │   ├── CreateUserController.ts
+        │   ├── CreateUserUseCase.ts
+        │   └── ICreateUserRepository.ts
+        └── getUser/
+            ├── GetUserController.ts
+            ├── GetUserUseCase.ts
+            └── IGetUserRepository.ts
 └── index.ts
+
 ```
