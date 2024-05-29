@@ -1,12 +1,19 @@
 import User, { IUser } from '../../frameworks/typeorm/entities/UserEntity'
 
 export interface IUserRepository {
+  createUser(userData: Partial<IUser>): Promise<IUser>
   getUsers(): Promise<IUser[]>
   getUserById(userId: string): Promise<IUser | null>
-  createUser(userData: Partial<IUser>): Promise<IUser>
+  putUserById(userId: string, userData: Partial<IUser>): Promise<IUser | null>
+  deleteUserById(userId: string): Promise<IUser | null>
 }
 
 export class UserRepository implements IUserRepository {
+  async createUser(userData: Partial<IUser>): Promise<IUser> {
+    const user = new User(userData)
+    return user.save()
+  }
+
   async getUsers(): Promise<IUser[]> {
     return User.find().exec()
   }
@@ -15,8 +22,14 @@ export class UserRepository implements IUserRepository {
     return User.findById(userId).exec()
   }
 
-  async createUser(userData: Partial<IUser>): Promise<IUser> {
-    const user = new User(userData)
-    return user.save()
+  async putUserById(
+    userId: string,
+    userData: Partial<IUser>
+  ): Promise<IUser | null> {
+    return User.findByIdAndUpdate(userId, userData).exec()
+  }
+
+  async deleteUserById(userId: string): Promise<IUser | null> {
+    return User.findByIdAndDelete(userId).exec()
   }
 }

@@ -9,7 +9,10 @@ const options = {
       description: 'Documentation for the Clean Architecture API'
     }
   },
-  apis: ['./src/frameworks/express/server.ts']
+  apis: [
+    './src/frameworks/express/server.ts', 
+    './src/adapters/controllers/*.ts'
+  ],
 }
 
 const specs = swaggerJsdoc(options)

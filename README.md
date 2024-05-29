@@ -30,14 +30,22 @@ src/
 │       └── Validation.ts
 └── useCases/
     └── user/
-        ├── createUser/
+        ├── create/
         │   ├── CreateUserController.ts
         │   ├── CreateUserUseCase.ts
         │   └── ICreateUserRepository.ts
-        └── getUser/
-            ├── GetUserController.ts
-            ├── GetUserUseCase.ts
-            └── IGetUserRepository.ts
+        ├── delete/
+        │   ├── DeleteUserController.ts
+        │   ├── DeleteUserUseCase.ts
+        │   └── IDeleteUserRepository.ts
+        ├── get/
+        │   ├── GetUserController.ts
+        │   ├── GetUserUseCase.ts
+        │   └── IGetUserRepository.ts       │
+        └── put/
+            ├── PutUserController.ts
+            ├── PutUserUseCase.ts
+            └── IPutUserRepository.ts
 └── index.ts
 
 ```
