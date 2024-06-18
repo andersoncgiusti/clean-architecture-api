@@ -1,6 +1,6 @@
 import mongoose, { ConnectOptions } from 'mongoose'
 import dotenv from 'dotenv'
-import logger from '../../shared/logger'
+import logger from '../../shared/logger/logger'
 
 dotenv.config()
 

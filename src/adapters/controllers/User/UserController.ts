@@ -1,6 +1,6 @@
 import { Application, Request, Response } from 'express'
 import { UserService } from '@/services/UserService'
-import { UserPresenter } from '../presenters/UserPresenter'
+import { UserPresenter } from '../../presenters/User/UserPresenter'
 
 export default (app: Application, userService: UserService) => {
   /**

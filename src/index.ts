@@ -3,7 +3,7 @@
 import app from './frameworks/express/server'
 import portfinder from 'portfinder'
 import connectDB from './frameworks/typeorm/database'
-import logger from './shared/logger'
+import logger from './shared/logger/logger'
 
 (async () => {
   try {

@@ -1,4 +1,6 @@
-import User, { IUser } from '../../frameworks/typeorm/entities/UserEntity'
+import User, {
+  IUser
+} from '../../../frameworks/typeorm/entities/User/UserEntity'
 
 export interface IUserRepository {
   createUser(userData: Partial<IUser>): Promise<IUser>

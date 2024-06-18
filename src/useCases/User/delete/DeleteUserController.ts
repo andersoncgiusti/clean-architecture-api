@@ -1,6 +1,6 @@
 import { Request, Response } from 'express'
-import { UserService } from '../../../services/UserService'
-import { UserPresenter } from '../../../adapters/presenters/UserPresenter'
+import { UserService } from '../../../services/User/UserService'
+import { UserPresenter } from '../../../adapters/presenters/User/UserPresenter'
 
 export class DeleteUserController {
   constructor(private readonly userService: UserService) {}

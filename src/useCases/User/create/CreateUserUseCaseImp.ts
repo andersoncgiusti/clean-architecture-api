@@ -1,4 +1,4 @@
-import { IUser } from '../../../frameworks/typeorm/entities/UserEntity'
+import { IUser } from '../../../frameworks/typeorm/entities/User/UserEntity'
 import { UserRepository } from '../../../adapters/repositories/UserRepository'
 
 export class CreateUserUseCase {

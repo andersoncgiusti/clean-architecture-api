@@ -1,7 +1,7 @@
 import { Application } from 'express'
 import { readdirSync } from 'fs'
 import { join } from 'path'
-import { IUserRepository } from '../repositories/UserRepository'
+import { IUserRepository } from '../repositories/User/UserRepository'
 
 export default (app: Application, userRepository: IUserRepository) => {
   const controllersPath = __dirname

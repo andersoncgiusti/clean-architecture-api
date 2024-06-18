@@ -1,9 +1,9 @@
-import { User } from '@/entities/User'
-import { CreateUserUseCase } from '@/useCases/User/create/CreateUserUseCase'
+import { User } from '@/entities/User/User.entity'
+import { CreateUserUseCase } from '@/useCases/User/create/CreateUserUseCaseImp'
 import { GetUserUseCase } from '@/useCases/User/get/GetUserUseCase'
 import { PutUserUseCase } from '@/useCases/User/put/PutUserUseCase'
 import { DeleteUserUseCase } from '@/useCases/User/delete/DeleteUserUseCase'
-import { UserRepository } from '@/adapters/repositories/UserRepository'
+import { UserRepository } from '@/adapters/repositories/User/UserRepository'
 
 export class UserService {
   constructor(private readonly userRepository: UserRepository) {}

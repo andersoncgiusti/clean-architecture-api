@@ -3,10 +3,13 @@ import cors from 'cors'
 import swaggerUi from 'swagger-ui-express'
 import specs from '../../swagger'
 import registerControllers from '../../adapters/controllers'
-import { UserRepository } from '../../adapters/repositories/UserRepository'
+import { UserRepository } from '../../adapters/repositories/User/UserRepository'
+import { customLogger } from '../../shared/logger/customLogger'
 
 const app: Application = express()
 const userRepository = new UserRepository()
+
+app.use(customLogger)
 
 app.use(cors())
 app.use(express.json())

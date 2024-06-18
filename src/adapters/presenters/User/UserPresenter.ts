@@ -1,4 +1,4 @@
-import { User } from '@/entities/User'
+import { User } from '@/entities/User/User.entity'
 
 export class UserPresenter {
   static toResponse(user: User): User {
