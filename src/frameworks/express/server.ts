@@ -8,6 +8,9 @@ import { customLogger } from '../../shared/logger/customLogger'
 
 const app: Application = express()
 const userRepository = new UserRepository()
+console.log('====================================')
+console.log('userRepository', userRepository)
+console.log('====================================')
 
 app.use(customLogger)
 

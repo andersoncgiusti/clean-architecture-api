@@ -1,5 +1,5 @@
 import { IUser } from '../../../frameworks/typeorm/entities/User/UserEntity'
-import { UserRepository } from '../../../adapters/repositories/UserRepository'
+import { UserRepository } from '../../../adapters/repositories/User/UserRepository'
 
 export class PutUserUseCase {
   constructor(private readonly userRepository: UserRepository) {}
