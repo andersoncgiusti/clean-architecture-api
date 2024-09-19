@@ -5,10 +5,9 @@
 src/
 ├── adapters/
 │   ├── controllers/
-│   │   ├── User/
-│   │   │   ├── __tests__/
-│   │   │   │   └── UserController.test.ts
-│   │   │   └── UserController.ts
+│   │   ├── __tests__/
+│   │   │   └── UserController.test.ts
+│   │   ├── UserController.ts
 │   │   └── index.ts
 │   ├── presenters/
 │   │   └── User/

@@ -5,18 +5,18 @@ import specs from '../../swagger'
 import registerControllers from '../../adapters/controllers'
 import { UserRepository } from '../../adapters/repositories/User/UserRepository'
 import { customLogger } from '../../shared/logger/customLogger'
+import { errorHandlerMiddleware } from './middlewares/errorHandlerMiddleware'
 
 const app: Application = express()
 const userRepository = new UserRepository()
-console.log('====================================')
-console.log('userRepository', userRepository)
-console.log('====================================')
 
 app.use(customLogger)
 
 app.use(cors())
 app.use(express.json())
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(specs))
+
+app.use(errorHandlerMiddleware)
 
 /**
  * @swagger

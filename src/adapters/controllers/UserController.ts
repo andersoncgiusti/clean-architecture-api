@@ -22,12 +22,32 @@ export default (app: Application, userService: UserService) => {
    *         description: Mensagem de sucesso
    */
   app.post('/api/users', async (req: Request, res: Response) => {
-    try {
-      const user = await userService.createUser(req.body)
-      res.status(201).json(UserPresenter.toResponse(user))
-    } catch (error) {
-      res.status(500).json({ error: 'Internal Server Error' })
-    }
+    // try {
+    //   const user = await userService.createUser(req.body)
+    //   res.status(201).json({
+    //     Status: res.statusCode,
+    //     Message: 'User created successfully',
+    //     Endpoint: req.url,
+    //     Method: req.method,
+    //     Results: UserPresenter.toResponse(user)
+    //   })
+    // } catch (error) {
+    //   res.status(500).json({
+    //     Status: res.statusCode,
+    //     Message: 'Internal Server Error',
+    //     Endpoint: req.url,
+    //     Method: req.method,
+    //     Results: error.message
+    //   })
+    // }
+    const user = await userService.createUser(req.body)
+    res.status(201).json({
+      Status: res.statusCode,
+      Message: 'User created successfully',
+      Endpoint: req.url,
+      Method: req.method,
+      Results: UserPresenter.toResponse(user)
+    })
   })
 
   /**
@@ -43,11 +63,29 @@ export default (app: Application, userService: UserService) => {
     try {
       const users = await userService.getUsers()
       if (!users || users.length === 0) {
-        return res.status(404).json({ error: 'No users found' })
+        return res.status(404).json({
+          Status: res.statusCode,
+          Message: 'No users found',
+          Endpoint: req.url,
+          Method: req.method,
+          Results: users
+        })
       }
-      res.json(UserPresenter.toResponseArray(users))
+      res.status(200).json({
+        Status: res.statusCode,
+        Message: 'Users found successfully',
+        Endpoint: req.url,
+        Method: req.method,
+        Results: UserPresenter.toResponseArray(users)
+      })
     } catch (error) {
-      res.status(500).json({ error: 'Internal Server Error' })
+      res.status(500).json({
+        Status: res.statusCode,
+        Message: 'Internal Server Error',
+        Endpoint: req.url,
+        Method: req.method,
+        Results: error.message
+      })
     }
   })
 
@@ -68,16 +106,52 @@ export default (app: Application, userService: UserService) => {
    *         description: Mensagem de sucesso
    */
   app.get('/api/users/:id', async (req: Request, res: Response) => {
+    // const { id } = req.params
+    // try {
+    //   const user = await userService.getUserById(id)
+    //   if (!user) {
+    //     return res.status(404).json({
+    //       Status: res.statusCode,
+    //       Message: 'No users found',
+    //       Endpoint: req.url,
+    //       Method: req.method,
+    //       Results: user
+    //     })
+    //   }
+    //   res.status(200).json({
+    //     Status: res.statusCode,
+    //     Message: 'User found successfully',
+    //     Endpoint: req.url,
+    //     Method: req.method,
+    //     Results: UserPresenter.toResponse(user)
+    //   })
+    // } catch (error) {
+    //   res.status(500).json({
+    //     Status: res.statusCode,
+    //     Message: 'Internal Server Error',
+    //     Endpoint: req.url,
+    //     Method: req.method,
+    //     Results: error.message
+    //   })
+    // }
     const { id } = req.params
-    try {
-      const user = await userService.getUserById(id)
-      if (!user) {
-        return res.status(404).json({ error: 'User not found' })
-      }
-      res.json(UserPresenter.toResponse(user))
-    } catch (error) {
-      res.status(500).json({ error: 'Internal Server Error' })
+    const user = await userService.getUserById(id)
+    if (!user) {
+      return res.status(404).json({
+        Status: res.statusCode,
+        Message: 'No users found',
+        Endpoint: req.url,
+        Method: req.method,
+        Results: user
+      })
     }
+    res.status(200).json({
+      Status: res.statusCode,
+      Message: 'User found successfully',
+      Endpoint: req.url,
+      Method: req.method,
+      Results: UserPresenter.toResponse(user)
+    })
   })
 
   /**
@@ -110,11 +184,29 @@ export default (app: Application, userService: UserService) => {
     try {
       const user = await userService.putUserById(id, req.body)
       if (!user) {
-        return res.status(404).json({ error: 'User not found' })
+        return res.status(404).json({
+          Status: res.statusCode,
+          Message: 'User not found',
+          Endpoint: req.url,
+          Method: req.method,
+          Results: user
+        })
       }
-      res.json(UserPresenter.toResponse(req.body))
+      res.status(201).json({
+        Status: res.statusCode,
+        Message: 'Users found successfully',
+        Endpoint: req.url,
+        Method: req.method,
+        Results: UserPresenter.toResponse(req.body)
+      })
     } catch (error) {
-      res.status(500).json({ error: 'Internal Server Error' })
+      res.status(500).json({
+        Status: res.statusCode,
+        Message: 'Internal Server Error',
+        Endpoint: req.url,
+        Method: req.method,
+        Results: error.message
+      })
     }
   })
 
@@ -139,11 +231,29 @@ export default (app: Application, userService: UserService) => {
     try {
       const user = await userService.deleteUserById(id)
       if (!user) {
-        return res.status(404).json({ error: 'User not found' })
+        return res.status(404).json({
+          Status: res.statusCode,
+          Message: 'User not found',
+          Endpoint: req.url,
+          Method: req.method,
+          Results: user
+        })
       }
-      res.json(UserPresenter.toResponse(user))
+      res.status(201).json({
+        Status: res.statusCode,
+        Message: 'User deleted successfully',
+        Endpoint: req.url,
+        Method: req.method,
+        Results: UserPresenter.toResponse(user)
+      })
     } catch (error) {
-      res.status(500).json({ error: 'Internal Server Error' })
+      res.status(500).json({
+        Status: res.statusCode,
+        Message: 'Internal Server Error',
+        Endpoint: req.url,
+        Method: req.method,
+        Results: error.message
+      })
     }
   })
 }
