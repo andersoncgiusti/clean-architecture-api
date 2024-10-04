@@ -1,7 +1,7 @@
-import { IUser } from '../../../frameworks/model/entities/User/UserEntity'
-import { UserRepository } from '../../../adapters/repositories/User/UserRepository'
+import { IUser } from '../../frameworks/model/entities/User/UserEntity'
+import { UserRepository } from '../../adapters/repositories/User/UserRepository'
 
-export class PutUserUseCase {
+export class PutUserUseCaseImp {
   constructor(private readonly userRepository: UserRepository) {}
 
   async execute(

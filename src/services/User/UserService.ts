@@ -1,8 +1,8 @@
 import { User } from '@/entities/User/User.entity'
-import { CreateUserUseCase } from '@/useCases/User/create/CreateUserUseCaseImp'
-import { GetUserUseCase } from '@/useCases/User/get/GetUserUseCase'
-import { PutUserUseCase } from '@/useCases/User/put/PutUserUseCase'
-import { DeleteUserUseCase } from '@/useCases/User/delete/DeleteUserUseCase'
+import { CreateUserUseCase } from '@/useCases/User/CreateUserUseCaseImp'
+import { GetUserUseCaseImp } from '@/useCases/User/GetUserUseCaseImp'
+import { PutUserUseCaseImp } from '@/useCases/User/PutUserUseCaseImp'
+import { DeleteUserUseCaseImp } from '@/useCases/User/DeleteUserUseCaseImp'
 import { UserRepository } from '@/adapters/repositories/User/UserRepository'
 
 export class UserService {
@@ -18,7 +18,7 @@ export class UserService {
   }
 
   async getUserById(userId: string): Promise<User | null> {
-    const getUserUseCaseId = new GetUserUseCase(this.userRepository)
+    const getUserUseCaseId = new GetUserUseCaseImp(this.userRepository)
     return getUserUseCaseId.execute(userId)
   }
 
@@ -26,12 +26,12 @@ export class UserService {
     userId: string,
     userData: Partial<User>
   ): Promise<User | null> {
-    const putUserUseCase = new PutUserUseCase(this.userRepository)
+    const putUserUseCase = new PutUserUseCaseImp(this.userRepository)
     return putUserUseCase.execute(userId, userData)
   }
 
   async deleteUserById(userId: string): Promise<User | null> {
-    const deleteUserUseCase = new DeleteUserUseCase(this.userRepository)
+    const deleteUserUseCase = new DeleteUserUseCaseImp(this.userRepository)
     return deleteUserUseCase.execute(userId)
   }
 }

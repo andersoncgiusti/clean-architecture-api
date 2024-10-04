@@ -1,6 +1,4 @@
-import User, {
-  IUser
-} from '../../../frameworks/model/entities/User/UserEntity'
+import User, { IUser } from '../../../frameworks/model/entities/User/UserEntity'
 
 export interface IUserRepository {
   createUser(userData: Partial<IUser>): Promise<IUser>

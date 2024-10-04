@@ -1,5 +1,5 @@
-import { IUser } from '../../../frameworks/model/entities/User/UserEntity'
-import { UserRepository } from '../../../adapters/repositories/User/UserRepository'
+import { IUser } from '../../frameworks/model/entities/User/UserEntity'
+import { UserRepository } from '../../adapters/repositories/User/UserRepository'
 
 export class CreateUserUseCase {
   constructor(private userRepository: UserRepository) {}
