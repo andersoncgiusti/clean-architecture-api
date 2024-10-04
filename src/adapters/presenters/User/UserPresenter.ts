@@ -4,7 +4,9 @@ export class UserPresenter {
   static toResponse(user: User): User {
     return {
       id: user.id,
-      name: user.name
+      name: user.name,
+      email: user.email,
+      permission: user.permission
     }
   }
 

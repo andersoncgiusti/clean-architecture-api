@@ -1,4 +1,4 @@
-import { IUser } from '../../../frameworks/typeorm/entities/User/UserEntity'
+import { IUser } from '../../../frameworks/model/entities/User/UserEntity'
 
 export interface IGetUserRepository {
   getUserById(userId: string): Promise<IUser | null>

@@ -1,4 +1,4 @@
-import { IUser } from '../../../frameworks/typeorm/entities/User/UserEntity'
+import { IUser } from '../../../frameworks/model/entities/User/UserEntity'
 import { UserRepository } from '../../../adapters/repositories/User/UserRepository'
 
 export class DeleteUserUseCase {
